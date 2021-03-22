@@ -1,57 +1,101 @@
-var questions = [
-    "What is a group of letters of numbers in quotation marks called in Javascript?",
-    "What is a set of steps/plan to solve a problem called?",
-    "What is the terminal demand to remove a file from a repository?",
-    ]
+var startButton = document.getElementById("startButton")
+var startPage = document.getElementById("startPage")
+var question = document.getElementById("question")
+var questionDiv = document.getElementById("questionDiv")
+var endPage = document.getElementById("endPage")
 
-var correctAnswers = [
-    "A string",
-    "An algorithm",
-    "rm"]
+var question_objects = [
+    {name: "what is HTML?",
+    answers: ["HyperText Markup Language", "hypnotic toad markup language", "Harris Teeter is My Life", "Harry styles"],
+    correctedAnswers: "HyperText Markup Language"}, 
 
-var incorrectAnswers = [
-    "DOM",
-    "object",
-    "array",
-    "list",
-    "tuple",
-    "dictionary",
-    "set",
-    "equation",
-    "word bank",
+    {name: "What is a group of letters of numbers in quotation marks called in Javascript?",
+    answers: ["DOM", "object", "array", "string"], 
+    correctAnswers: "string"},
+
+    {name:"What is the terminal demand to remove a file from a repository?",
+    answers: ["object","rm","rf","mkdir"],
+    correctAnswers: "rm"}
 ]
 
-var questionDisplayed = document.getElementById("question")
+startButton.onclick = startQuiz
+var questionVar = document.createElement("div")
 
-questionDisplayed.textContent = questions[2]
+function startQuiz() {
+    startPage.setAttribute("style","display: none");
+    question.setAttribute("style", "display: block");
 
-// getting a random number from a list to concatenate it to "button"
-var list = [1,2,3,4]
-randomNumber = list[Math.floor(Math.random() * list.length)]
+    questionVar.textContent = question_objects[0].name;
+    questionDiv.appendChild(questionVar)
 
-var concatenation = ("button"+randomNumber)
-console.log(concatenation)
+    button1.textContent = question_objects[0].answers[0]
+    button2.textContent = question_objects[0].answers[1]
+    button3.textContent = question_objects[0].answers[2]
+    button4.textContent = question_objects[0].answers[3]
 
-// selecting the button, which is randomly chosen
-var correctAnswerDisplayed = document.getElementById(concatenation)
-var buttonList = ["button1","button2","button3","button4"];
-
-console.log(typeof buttonList)
-// removing the concatenation from the list of buttons so that there are no repeats
-if (buttonList.isArray(concatenation)) {
-    buttonList.remove(concatenation)
+    button1.onclick = correctAnswer1
+    button2.onclick = incorrectAnswer1
+    button3.onclick = incorrectAnswer1
+    button4.onclick = incorrectAnswer1
 }
 
-console.log(buttonList)
+function correctAnswer1() {
+    questionVar.textContent = question_objects[1].name
+    questionDiv.appendChild(questionVar)
 
-// changing the text content of the randomly chosen button 
-correctAnswerDisplayed.textContent = correctAnswers[2]
+    button1.textContent = question_objects[1].answers[0]
+    button2.textContent = question_objects[1].answers[1]
+    button3.textContent = question_objects[1].answers[2]
+    button4.textContent = question_objects[1].answers[3]
 
-// add each used word to the used list and then check to see if it's in there and if not then assign it to a button
-var usedAnswers = []
-var usedButtons
+    button4.onclick = correctAnswer2
+    button1.onclick = incorrectAnswer2
+    button2.onclick = incorrectAnswer2
+    button3.onclick = incorrectAnswer2
 
-var incorrectAnswerDisplayed = document.getElementbyID
-for (i=0; i < 4; i++) {
+}
+
+function incorrectAnswer1() {
+
+    questionVar.textContent = question_objects[1].name
+    questionDiv.appendChild(questionVar)
+
+
+    button1.textContent = question_objects[1].answers[0]
+    button2.textContent = question_objects[1].answers[1]
+    button3.textContent = question_objects[1].answers[2]
+    button4.textContent = question_objects[1].answers[3]
+
+    button2.onclick = correctAnswer2
+    button1.onclick = incorrectAnswer2
+    button3.onclick = incorrectAnswer2
+    button4.onclick = incorrectAnswer2
+}
+
+function correctAnswer2() {
+
+    questionVar.textContent = question_objects[2].name
+
+    button1.textContent = question_objects[2].answers[0]
+    button2.textContent = question_objects[2].answers[1]
+    button3.textContent = question_objects[2].answers[2]
+    button4.textContent = question_objects[2].answers[3]
+
+    button2.onclick = endQuiz
+}
+
+function incorrectAnswer2() {
+    questionVar.textcocntent = question_objects[2].name
+
+    button1.textContent = question_objects[2].answers[0]
+    button2.textContent = question_objects[2].answers[1]
+    button3.textContent = question_objects[2].answers[2]
+    button4.textContent = question_objects[2].answers[3]
+
+}
+
+function endQuiz() {
+    question.setAttribute("style", "display: none")
+    endPage.setAttribute("style", "display: block")
 
 }
