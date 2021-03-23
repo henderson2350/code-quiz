@@ -3,6 +3,11 @@ var startPage = document.getElementById("startPage")
 var question = document.getElementById("question")
 var questionDiv = document.getElementById("questionDiv")
 var endPage = document.getElementById("endPage")
+var correctPage = document.getElementById("correct")
+var incorrectPage = document.getElementById("incorrect")
+var buttonDiv = document.getElementById("buttonDiv")
+
+var questionVar = document.createElement("div")
 
 var question_objects = [
     {name: "what is HTML?",
@@ -19,11 +24,10 @@ var question_objects = [
 ]
 
 startButton.onclick = startQuiz
-var questionVar = document.createElement("div")
 
 function startQuiz() {
     startPage.setAttribute("style","display: none");
-    question.setAttribute("style", "display: block");
+    question.setAttribute("style", "display: flex", "flex: reverse-column");
 
     questionVar.textContent = question_objects[0].name;
     questionDiv.appendChild(questionVar)
@@ -43,6 +47,7 @@ function correctAnswer1() {
     questionVar.textContent = question_objects[1].name
     questionDiv.appendChild(questionVar)
 
+    correctPage.setAttribute("style","display: block")
     button1.textContent = question_objects[1].answers[0]
     button2.textContent = question_objects[1].answers[1]
     button3.textContent = question_objects[1].answers[2]
@@ -60,41 +65,67 @@ function incorrectAnswer1() {
     questionVar.textContent = question_objects[1].name
     questionDiv.appendChild(questionVar)
 
-
+    correctPage.setAttribute("style", "display: none")
+    incorrectPage.setAttribute("style","display: block")
     button1.textContent = question_objects[1].answers[0]
     button2.textContent = question_objects[1].answers[1]
     button3.textContent = question_objects[1].answers[2]
     button4.textContent = question_objects[1].answers[3]
 
-    button2.onclick = correctAnswer2
+    button2.onclick = incorrectAnswer2
     button1.onclick = incorrectAnswer2
     button3.onclick = incorrectAnswer2
-    button4.onclick = incorrectAnswer2
+    button4.onclick = correctAnswer2
 }
 
 function correctAnswer2() {
 
     questionVar.textContent = question_objects[2].name
+    question.appendChild(questionVar)
 
+    correctPage.setAttribute("style","display: block")
+    incorrectPage.setAttribute("style", "display: none")
     button1.textContent = question_objects[2].answers[0]
     button2.textContent = question_objects[2].answers[1]
     button3.textContent = question_objects[2].answers[2]
     button4.textContent = question_objects[2].answers[3]
 
-    button2.onclick = endQuiz
+    button2.onclick = endQuizCorrect
+    button1.onclick = endQuizIncorrect
+    button3.onclick = endQuizIncorrect
+    button4.onclick = endQuizIncorrect
 }
 
 function incorrectAnswer2() {
-    questionVar.textcocntent = question_objects[2].name
+    console.log("I am on inorrectanswer2")
+    questionVar.textContent = question_objects[2].name
+    question.appendChild(questionVar)
 
+    incorrectPage.setAttribute("style","display: block")
+    correctPage.setAttribute("style", "display: none")
     button1.textContent = question_objects[2].answers[0]
     button2.textContent = question_objects[2].answers[1]
     button3.textContent = question_objects[2].answers[2]
     button4.textContent = question_objects[2].answers[3]
 
+    console.log(button2.textContent)
+    button2.onclick = endQuizCorrect
+    button1.onclick = endQuizIncorrect
+    button3.onclick = endQuizIncorrect
+    button4.onclick = endQuizIncorrect
 }
 
-function endQuiz() {
+function endQuizCorrect() {
+    correctPage.setAttribute("style", "display: block")
+    incorrectPage.setAttribute("style", "display: none")
+    question.setAttribute("style", "display: none")
+    endPage.setAttribute("style", "display: block")
+
+}
+
+function endQuizIncorrect() {
+    incorrectPage.setAttribute("style","display: block")
+    correctPage.setAttribute("style", "display: none")
     question.setAttribute("style", "display: none")
     endPage.setAttribute("style", "display: block")
 

@@ -1,3 +1,15 @@
+/* * {
+  font-family: sans-serif
+}
+
+h1 {
+  text-align: center
+}
+
+.buttonStyle {
+  background-color: blue;
+}
+
 #timer {
   position: relative;
   top: 5px;
@@ -6,7 +18,7 @@
 
 #question {
   position: relative;
-  top: 50px;
+  top: 20px;
   left: 35%;
 }
 
@@ -31,6 +43,11 @@
 
 #button4 {
     display: flex;
+} */
+
+#buttonDiv {
+  display: relative;
+  top:50px
 }
 
 #question {
@@ -38,5 +55,13 @@
 }
 
 #endPage {
+  display: none
+}
+
+#correct {
+  display: none
+}
+
+#incorrect {
   display: none
 }
