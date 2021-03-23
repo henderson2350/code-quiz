@@ -272,7 +272,20 @@ function gettingInputVal() {
     initialArray.push(myInput.value)
     console.log(initialArray)
 
+    scoreArray.push(count)
+    console.log(scoreArray)
+
+    endPage.style.display = "none"
     highScorePage.style.display = "block"
+
+    initials.textContent = myInput.value;
+    hiScore.textContent = count
 }
+
+// now that we know how to store the initials and the score into arrays, 
+// we need to figure out how to store them locally,
+// need to make a for loop to iterate through the initials array and the score array
+// and print them out in pairs
+//  ----question: how do we do this without overriding
 
 
