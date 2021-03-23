@@ -1,67 +1,52 @@
+/* ===UNIVERSAL SELECTOR=== */
 * {
   font-family: sans-serif
 }
 
+/* ===ELEMENT SELECTORS=== */
 h1 {
   text-align: center
 }
 
-/* .buttonStyle {
-  background-color: blue;
-}
+/* ===ID SELECTORS=== */
 
-#timer {
-  position: relative;
-  top: 5px;
-  left: 90%;
-}
-
-#question {
-  position: relative;
-  top: 20px;
-  left: 35%;
-}
-
-#answers {
-  position: relative;
-  top: 100px;
-  left: 35%;
-  display:inline-block
-}
-
-#button1 {
-    display: flex;
-}
-
-#button2 {
-    display: flex;
-}
-
-#button3 {
-    display: flex;
-}
-
-#button4 {
-    display: flex;
-} */ */
-
-#buttonDiv {
-  display: relative;
-  top:50px
-}
-
+/* Here we hide the section with id question until further notice */
 #question {
   display: none
 }
 
+#question2 {
+  display: none
+}
+
+#answers {
+  display: none
+}
+
+/* Here we hide the section with the end page until further notice */
 #endPage {
   display: none
 }
 
+/* Here we hide the section with the correct banner until further notice */
 #correct {
   display: none
 }
 
+/* Here we hide the section with the incorrect banner until further notice */
 #incorrect {
   display: none
 }
+
+/* Here we position the timer at the top right corner of the page */
+#timer {
+  position: relative;
+  top: -25px;
+  left: 90%;
+}
+
+/* Here we position the space where the question will go */
+#buttonDiv {
+  display: none
+}
+
