@@ -10,12 +10,7 @@ h1 {
 
 /* ===ID SELECTORS=== */
 
-/* Here we hide the section with id question until further notice */
-
-#question {
-  display: none
-}
-
+/* Here we hide the section with id question2 until further notice */
 #question2 {
   display: none
 }
@@ -51,6 +46,7 @@ h1 {
   display: none
 }
 
+/* Styling the start button */
 #startButton {
   background-color: violet;
   color: white;
@@ -59,6 +55,7 @@ h1 {
   left: 50%
 }
 
+/* Styling the other buttons */
 .buttonStyle {
   background-color: violet;
   color: white;
