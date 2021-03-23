@@ -10,8 +10,8 @@ h1 {
 
 /* ===ID SELECTORS=== */
 
-/* Here we hide the section with id question2 until further notice */
-#question2 {
+/* Here we hide the section with id question until further notice */
+#question {
   display: none
 }
 
@@ -53,6 +53,11 @@ h1 {
   padding: 10px;
   position: relative;
   left: 50%
+}
+
+/* hiding the high score page until needed */
+#highScorePage {
+  display: none
 }
 
 /* Styling the other buttons */

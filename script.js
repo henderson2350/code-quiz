@@ -5,13 +5,19 @@ var endPage = document.getElementById("endPage")
 var correctPage = document.getElementById("correct")
 var incorrectPage = document.getElementById("incorrect")
 var buttonSelect = document.querySelectorAll("button")
-var question2 = document.getElementById("question2")
+var question = document.getElementById("question")
 var pointCount = document.getElementById("pointCount")
+var highScorePage = document.getElementById("highScorePage")
+var initials = document.getElementById("initials")
+var hiScore = document.getElementById("hiScore")
+var submitButton = document.getElementById("submitButton")
 // var timer = document.getElementById("timer")
 
 // GlOBAL VARIABLES
 var count = 100
 var points = 0
+var initialArray = []
+var scoreArray = []
 
 // This is an array of objects, and in the "answer" key-value pairs, the values are arrays.
 // It's three objects within an array.
@@ -65,11 +71,11 @@ function subtractTime() {
 function startQuiz() {
     startPage.style.display = "none"
 
-    question2.style.display = "block"
+    question.style.display = "block"
     answers.style.display = "block"
     timer.textContent = count
 
-    question2.textContent = question_objects[0].name
+    question.textContent = question_objects[0].name
 
     button1.textContent = question_objects[0].answers[0]
     button2.textContent = question_objects[0].answers[1]
@@ -100,7 +106,7 @@ function startQuiz() {
 // This function is called if the user gets the first question right. 
 // The correct banner is displayed.
 function correctAnswer1() {
-    question2.textContent = question_objects[1].name
+    question.textContent = question_objects[1].name
 
     correctPage.style.display = "block"
 
@@ -133,7 +139,7 @@ function correctAnswer1() {
 // This function is called if the user gets the first question wrong. 
 // The incorrect banner is displayed.
 function incorrectAnswer1() {
-    question2.textContent = question_objects[1].name
+    question.textContent = question_objects[1].name
 
     correctPage.style.display = "none"
     incorrectPage.style.display = "block"
@@ -143,16 +149,31 @@ function incorrectAnswer1() {
     button3.textContent = question_objects[1].answers[2]
     button4.textContent = question_objects[1].answers[3]
 
-    button2.onclick = incorrectAnswer2
-    button1.onclick = incorrectAnswer2
-    button3.onclick = incorrectAnswer2
-    button4.onclick = correctAnswer2
+    button4.addEventListener("click", () => {
+        addPoint();
+        correctAnswer2()
+    })
+    
+    button2.addEventListener("click",() => {    
+        subtractTime();
+        incorrectAnswer2(); 
+    })
+
+    button3.addEventListener("click",() => {    
+        subtractTime();
+        incorrectAnswer2(); 
+    })
+
+    button1.addEventListener("click",() => {    
+        subtractTime();
+        incorrectAnswer2(); 
+    })
 }
 
 // This function is called if the user gets the second question right. 
 // The correct banner is displayed.
 function correctAnswer2() {
-    question2.textContent = question_objects[2].name
+    question.textContent = question_objects[2].name
 
     correctPage.style.display = "block"
     incorrectPage.style.display = "none"
@@ -167,16 +188,26 @@ function correctAnswer2() {
         endQuizCorrect()
     })
 
-    button1.onclick = endQuizIncorrect
-    button3.onclick = endQuizIncorrect
-    button4.onclick = endQuizIncorrect
+    button1.addEventListener("click", () => {
+        endQuizIncorrect()
+        subtractTime()
+    })
+
+    button3.addEventListener("click", () => {
+        endQuizIncorrect()
+        subtractTime()
+    })
+
+    button4.addEventListener("click", () => {
+        endQuizIncorrect()
+        subtractTime()
+    })
 }
 
 // This function is called if the user gets the second question wrong. 
 // The incorrect banner is displayed.
 function incorrectAnswer2() {
-    console.log("hellow")
-    question2.textContent = question_objects[2].name
+    question.textContent = question_objects[2].name
 
     incorrectPage.style.display = "block"
     correctPage.style.display = "none"
@@ -190,9 +221,21 @@ function incorrectAnswer2() {
         addPoint();
         endQuizCorrect()
     })
-    button1.onclick = endQuizIncorrect
-    button3.onclick = endQuizIncorrect
-    button4.onclick = endQuizIncorrect
+
+    button1.addEventListener("click", () => {
+        endQuizIncorrect()
+        subtractTime()
+    })
+
+    button3.addEventListener("click", () => {
+        endQuizIncorrect()
+        subtractTime()
+    })
+
+    button4.addEventListener("click", () => {
+        endQuizIncorrect()
+        subtractTime()
+    })
 }
 
 // This function is called if the user gets the third question right.
@@ -200,11 +243,16 @@ function incorrectAnswer2() {
 function endQuizCorrect() {
     correctPage.style.display = "block"
     incorrectPage.style.display = "none"
-    question2.style.display = "none"
+    question.style.display = "none"
     endPage.style.display = "block"
     answers.style.display = "none"
     pointCount.textContent = points
 
+    // submitButton.onclick = function() {
+    //     var inputVal = document.getElementById("myInput");
+    //     alert(myInput.value);
+    // }
+    submitButton.addEventListener("click", gettingInputVal) 
 }
 
 // This function is called if the user gets the third question wrong.
@@ -212,8 +260,19 @@ function endQuizCorrect() {
 function endQuizIncorrect() {
     incorrectPage.style.display = "block"
     correctPage.style.display = "none"
-    question2.style.display = "none"
+    question.style.display = "none"
     endPage.style.display = "block"
     answers.style.display = "none"
     pointCount.textContent = points
+
+    submitButton.onclick = gettingInputVal
 }
+
+function gettingInputVal() {
+    initialArray.push(myInput.value)
+    console.log(initialArray)
+
+    highScorePage.style.display = "block"
+}
+
+
