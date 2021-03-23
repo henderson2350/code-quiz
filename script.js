@@ -7,6 +7,10 @@ var incorrectPage = document.getElementById("incorrect")
 var answerButtons = document.getElementById("answerButtons")
 var buttonSelect = document.querySelectorAll("button")
 var question2 = document.getElementById("question2")
+// var timer = document.getElementById("timer")
+
+// global variables
+var count = 20
 
 // THIS IS AN ARRAY OF OBJECTS, AND INSIDE THOSE OBJECTS ARE KEY VALUE PAIRS--
 // THE VALUES FOR "ANSWERS" ARE ARRAYS
@@ -25,13 +29,19 @@ var question_objects = [
 ]
 
 // STARTING THE QUIZ BY CALLING THE START QUIZ FUNCTION W/ ONCLICK OF THE start button
-startButton.onclick = startQuiz
+startButton.addEventListener('click',() => {    
+    startQuiz();
+    startTimer();    
+});
+
+// startButton.onclick = startQuiz
 
 function startQuiz() {
     startPage.style.display = "none"
 
     question2.style.display = "block"
     answers.style.display = "block"
+    timer.textContent = count
 
     question2.textContent = question_objects[0].name
 
@@ -108,7 +118,6 @@ function incorrectAnswer2() {
     button3.textContent = question_objects[2].answers[2]
     button4.textContent = question_objects[2].answers[3]
 
-    console.log("hello")
     button2.onclick = endQuizCorrect
     button1.onclick = endQuizIncorrect
     button3.onclick = endQuizIncorrect
@@ -117,7 +126,7 @@ function incorrectAnswer2() {
 
 function endQuizCorrect() {
     correctPage.style.display = "block"
-    inorrectPage.style.display = "none"
+    incorrectPage.style.display = "none"
     question2.style.display = "none"
     endPage.style.display = "block"
     answerButtons.style.display = "none"
@@ -133,12 +142,15 @@ function endQuizIncorrect() {
 
 }
 
-// Formatting the buttons using javascript and our buttonSelect variable which
-// includes all of the buttons on the page.
-for (i = 0; i < buttonSelect.length; i++ ) {
-    buttonSelect[i].style.backgroundColor = "violet";
-    buttonSelect[i].style.color = "white";
-    buttonSelect[i].style.padding = "10px";
-    buttonSelect[i].style.borderColor = "blue"
+function startTimer() {
+    var interval = setInterval(function() {
+        console.log(count);
+        timer.textContent = count
+        count--;
+        if (count === -1) {
+            clearInterval(interval)
+        }
+    }, 1000) 
 }
 
+// POINT FUNCTIONS

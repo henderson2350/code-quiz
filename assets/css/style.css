@@ -11,6 +11,7 @@ h1 {
 /* ===ID SELECTORS=== */
 
 /* Here we hide the section with id question until further notice */
+
 #question {
   display: none
 }
@@ -50,3 +51,18 @@ h1 {
   display: none
 }
 
+#startButton {
+  background-color: violet;
+  color: white;
+  padding: 10px;
+  position: relative;
+  left: 50%
+}
+
+.buttonStyle {
+  background-color: violet;
+  color: white;
+  padding: 10px;
+  position: relative;
+
+}
