@@ -1,4 +1,4 @@
-/* * {
+* {
   font-family: sans-serif
 }
 
@@ -6,7 +6,7 @@ h1 {
   text-align: center
 }
 
-.buttonStyle {
+/* .buttonStyle {
   background-color: blue;
 }
 
@@ -43,7 +43,7 @@ h1 {
 
 #button4 {
     display: flex;
-} */
+} */ */
 
 #buttonDiv {
   display: relative;

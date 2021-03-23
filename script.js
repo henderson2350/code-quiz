@@ -1,3 +1,4 @@
+// DOM VARIABLES -- SELECTING ELEMENTS 
 var startButton = document.getElementById("startButton")
 var startPage = document.getElementById("startPage")
 var question = document.getElementById("question")
@@ -6,7 +7,7 @@ var endPage = document.getElementById("endPage")
 var correctPage = document.getElementById("correct")
 var incorrectPage = document.getElementById("incorrect")
 var buttonDiv = document.getElementById("buttonDiv")
-
+var buttonSelect = document.querySelectorAll("button")
 var questionVar = document.createElement("div")
 
 var question_objects = [
@@ -129,4 +130,14 @@ function endQuizIncorrect() {
     question.setAttribute("style", "display: none")
     endPage.setAttribute("style", "display: block")
 
+}
+
+// Formatting the buttons using javascript and our buttonSelect variable which
+// includes all of the buttons
+
+for (i = 0; i < buttonSelect.length; i++ ) {
+    buttonSelect[i].style.backgroundColor = "violet";
+    buttonSelect[i].style.color = "white";
+    buttonSelect[i].style.padding = "10px";
+    buttonSelect[i].style.borderColor = "blue"
 }
