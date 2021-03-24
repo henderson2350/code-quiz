@@ -22,13 +22,16 @@ var points = 0
 var initialArray = []
 var scoreArray = []
 
+// localStorage.setItem(initialArray)
+// localStorage.setItem(scoreArray)
+
 // var initialArray = localStorage.getItem("initialArray")
 // var scoreArray = localStorage.getItem("scoreArray")
 
 // This is an array of objects, and in the "answer" key-value pairs, the values are arrays.
 // It's three objects within an array.
 var question_objects = [
-    {name: "what is HTML?",
+    {name: "What is HTML?",
     answers: ["HyperText Markup Language", "hypnotic toad markup language", "Harris Teeter is My Life", "Harry styles"],
     correctedAnswers: "HyperText Markup Language"}, 
 
@@ -299,8 +302,8 @@ function reinitialize() {
     highScorePage.style.display = "none"
 }
 
-// localStorage.getItem(initialArray)
-// localStorage.getItem(scoreArray)
+localStorage.getItem(initialArray)
+localStorage.getItem(scoreArray)
 
 // now that we know how to store the initials and the score into arrays, 
 // we need to figure out how to store them locally,

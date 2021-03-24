@@ -1,37 +1,45 @@
 /* ===UNIVERSAL SELECTOR=== */
 * {
-  font-family: sans-serif
+  font-family: sans-serif;
+  background-color: powderblue;
 }
 
 /* ===ELEMENT SELECTORS=== */
 h1 {
-  text-align: center
+  text-align: center;
 }
 
 /* ===ID SELECTORS=== */
 
 /* Here we hide the section with id question until further notice */
 #question {
-  display: none
+  display: none;
+  color: purple;
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+  margin: 20px;
+  background-color: lightgoldenrodyellow;
 }
 
 #answers {
-  display: none
+  display: none;
+  text-align: center
 }
 
 /* Here we hide the section with the end page until further notice */
 #endPage {
-  display: none
+  display: none;
 }
 
 /* Here we hide the section with the correct banner until further notice */
 #correct {
-  display: none
+  display: none;
 }
 
 /* Here we hide the section with the incorrect banner until further notice */
 #incorrect {
-  display: none
+  display: none;
 }
 
 /* Here we position the timer at the top right corner of the page */
@@ -39,11 +47,13 @@ h1 {
   position: relative;
   top: -25px;
   left: 90%;
+  font-size: large;
+  color: crimson;
 }
 
 /* Here we position the space where the question will go */
 #buttonDiv {
-  display: none
+  display: none;
 }
 
 /* Styling the start button */
@@ -52,12 +62,12 @@ h1 {
   color: white;
   padding: 10px;
   position: relative;
-  left: 50%
+  left: 50%;
 }
 
 /* hiding the high score page until needed */
 #highScorePage {
-  display: none
+  display: none;
 }
 
 /* Styling the other buttons */
@@ -66,5 +76,4 @@ h1 {
   color: white;
   padding: 10px;
   position: relative;
-
 }
