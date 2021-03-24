@@ -18,8 +18,12 @@ var clearHiScores = document.getElementById("clearHiScores")
 // GlOBAL VARIABLES
 var count = 100
 var points = 0
+
 var initialArray = []
 var scoreArray = []
+
+// var initialArray = localStorage.getItem("initialArray")
+// var scoreArray = localStorage.getItem("scoreArray")
 
 // This is an array of objects, and in the "answer" key-value pairs, the values are arrays.
 // It's three objects within an array.
@@ -295,8 +299,9 @@ function reinitialize() {
     highScorePage.style.display = "none"
 }
 
-var storedArrayI = localStorage.getItem(initialArray)
-var storedScores = localStorage.getItem(scoreArray)
+// localStorage.getItem(initialArray)
+// localStorage.getItem(scoreArray)
+
 // now that we know how to store the initials and the score into arrays, 
 // we need to figure out how to store them locally,
 // need to make a for loop to iterate through the initials array and the score array
