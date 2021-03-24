@@ -11,6 +11,8 @@ var highScorePage = document.getElementById("highScorePage")
 var initials = document.getElementById("initials")
 var hiScore = document.getElementById("hiScore")
 var submitButton = document.getElementById("submitButton")
+var goBack = document.getElementById("goBack")
+var clearHiScores = document.getElementById("clearHiScores")
 // var timer = document.getElementById("timer")
 
 // GlOBAL VARIABLES
@@ -272,16 +274,29 @@ function gettingInputVal() {
     initialArray.push(myInput.value)
     console.log(initialArray)
 
-    scoreArray.push(count)
-    console.log(scoreArray)
+    scoreArray.push(points)
+    console.log(points)
 
     endPage.style.display = "none"
     highScorePage.style.display = "block"
+    incorrectPage.style.display = "none"
+    correctPage.style.display = "none"
 
     initials.textContent = myInput.value;
-    hiScore.textContent = count
+    hiScore.textContent = points
+
+    goBack.onclick = reinitialize
 }
 
+// here we start the game over by reinitializing the start screen
+// and hiding the hi score page screen
+function reinitialize() {
+    startPage.style.display = "block"
+    highScorePage.style.display = "none"
+}
+
+var storedArrayI = localStorage.getItem(initialArray)
+var storedScores = localStorage.getItem(scoreArray)
 // now that we know how to store the initials and the score into arrays, 
 // we need to figure out how to store them locally,
 // need to make a for loop to iterate through the initials array and the score array
