@@ -13,14 +13,13 @@ var hiScore = document.getElementById("hiScore")
 var submitButton = document.getElementById("submitButton")
 var goBack = document.getElementById("goBack")
 var clearHiScores = document.getElementById("clearHiScores")
+var parent = document.getElementById("parent")
 // var timer = document.getElementById("timer")
 
 // GlOBAL VARIABLES
-var count = 100
+var count = 30
 var points = 0
 
-var initialArray = []
-var scoreArray = []
 
 // localStorage.setItem(initialArray)
 // localStorage.setItem(scoreArray)
@@ -58,11 +57,16 @@ function startTimer() {
     var interval = setInterval(function() {
         console.log(count);
         timer.textContent = count
-        count--;
-        if (count === -1) {
+        if (count <= 0) {
             clearInterval(interval)
+            // endPage.style.display = "block"
+            parent.style.display = "none"
         }
-    }, 1000) 
+        count--;
+    }, 1000)
+    
+
+    // When the count reaches zero, go to the end page.
 }
 
 // This function adds a point to the score when the user gets a question correct.
@@ -110,6 +114,7 @@ function startQuiz() {
         subtractTime();
         incorrectAnswer1(); 
     });
+
 }
 
 // This function is called if the user gets the first question right. 
@@ -262,6 +267,7 @@ function endQuizCorrect() {
     //     alert(myInput.value);
     // }
     submitButton.addEventListener("click", gettingInputVal) 
+    hiScoreCheck()
 }
 
 // This function is called if the user gets the third question wrong.
@@ -275,23 +281,24 @@ function endQuizIncorrect() {
     pointCount.textContent = points
 
     submitButton.onclick = gettingInputVal
+    hiScoreCheck()
+
 }
 
 function gettingInputVal() {
-    initialArray.push(myInput.value)
-    console.log(initialArray)
+    var scores = {
+        initials: myInput.value,
+        scores: points
+    }
 
-    scoreArray.push(points)
-    console.log(points)
+    localStorage.setItem("scoreObject", JSON.stringify(scores))
 
     endPage.style.display = "none"
     highScorePage.style.display = "block"
     incorrectPage.style.display = "none"
     correctPage.style.display = "none"
 
-    initials.textContent = myInput.value;
-    hiScore.textContent = points
-
+    clearHiScores.onclick = removeScores
     goBack.onclick = reinitialize
 }
 
@@ -302,8 +309,17 @@ function reinitialize() {
     highScorePage.style.display = "none"
 }
 
-localStorage.getItem(initialArray)
-localStorage.getItem(scoreArray)
+function hiScoreCheck() {
+    var pair = localStorage.getItem("scoreObject")
+    console.log(pair)
+    initials.textContent = pair;
+    hiScore.textContent = pair
+}
+
+function removeScores() {
+    initials.style.display = "none"
+    hiScore.style.display = "none"
+}
 
 // now that we know how to store the initials and the score into arrays, 
 // we need to figure out how to store them locally,
